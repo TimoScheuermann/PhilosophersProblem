@@ -1,5 +1,7 @@
 package de.PhilosophenProblem;
 
+import java.util.Arrays;
+
 /**
  * 
  * @author Timo Scheuermann, Andrei Berbescu, Nina Wolff, Julian Homburg
@@ -14,6 +16,10 @@ public class PhilosophersProblem {
 		System.out.println("Hello World!");
 		
 		int i = 10;
+	
+		Arrays.stream(new double[] {}).max();
+		
+		String test;
 		
 	}
 	
