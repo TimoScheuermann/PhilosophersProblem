@@ -1,8 +1,9 @@
 package de.PhilosophenProblem;
 
+import java.util.Arrays;
 import java.util.concurrent.Semaphore;
 
-import de.PhilosophenProblem.OldStyle.Philosoph;
+import de.PhilosophenProblem.Functional.Philosoph;
 
 /**
  * 
@@ -17,17 +18,18 @@ public class PhilosophersProblem {
 		
 		
 		// Schnelle Einstellung, welche Variante durchgespielt werden soll
-		boolean runOLD = true;
-		//boolean runFunctional = false;
+		boolean runOLD = false;
+		boolean runFunctional = true;
+		
+		//Festlegung der Anzahl an Philosophen & Gabeln
+		int amount = 5;
+		// Gabeln (in dem Fall) Semaphoren initialisierien
+		Semaphore[] sem = new Semaphore[amount];
+		
 		
 		// Block, für alte Art Java Quellcode zu schreiben
 		if(runOLD) {
 			
-			//Festlegung der Anzahl an Philosophen & Gabeln
-			int amount = 5;
-			
-			// Gabeln (in dem Fall) Semaphoren initialisierien
-			Semaphore[] sem = new Semaphore[amount];
 			for(int i = 0; i < amount; i ++) {
 				sem[i] = new Semaphore(1, true);
 			}
@@ -35,8 +37,25 @@ public class PhilosophersProblem {
 			// Philosophen initialisieren und starten
 			for(int i = 0; i < amount; i ++) {
 				// Jeweils linke und rechte Gabel zu weisen (vereinfacht geschrieben)
-				new Philosoph(sem[i], sem[(i+1) % amount]).start();
+				new de.PhilosophenProblem.OldStyle.Philosoph(sem[i], sem[(i+1) % amount]).start();
 			}
+			
+		}
+		
+		
+		if(runFunctional) {
+			
+			Arrays.stream(sem)
+			.map(x -> new Semaphore(1, true));
+			
+			Arrays.stream(new int[] {0,1,2,3,4})
+			.forEach(x -> 
+				Philosoph.start(phil -> {
+					phil.id(x)
+						.linkeGabel(sem[x])
+						.rechteGabel(sem[(x+1) % amount]);
+				})
+			);
 			
 		}
 		
