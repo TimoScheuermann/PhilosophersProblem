@@ -13,8 +13,7 @@ public class Philosoph extends Thread {
 	
 	// Variablen für menschliches Verständnis
 	private static int philosophen = 0;
-	private int id;
-	private int nudelnVerzehrt = 0;
+	private int id, nudelnVerzehrt = 0;
 	
 	// Construktor
 	public Philosoph(Semaphore linkeGabel, Semaphore rechteGabel) {

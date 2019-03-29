@@ -14,7 +14,7 @@ import de.PhilosophenProblem.Functional.Philosoph;
  */
 public class PhilosophersProblem {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		
 		
 		// Schnelle Einstellung, welche Variante durchgespielt werden soll
@@ -50,10 +50,12 @@ public class PhilosophersProblem {
 			
 			Arrays.stream(new int[] {0,1,2,3,4})
 			.forEach(x -> 
-				Philosoph.start(phil -> {
+				Philosoph.create(phil -> {
 					phil.id(x)
 						.linkeGabel(sem[x])
-						.rechteGabel(sem[(x+1) % amount]);
+						.rechteGabel(sem[(x+1) % amount])
+						.aufwecken();
+					phil.aufwecken();
 				})
 			);
 			
