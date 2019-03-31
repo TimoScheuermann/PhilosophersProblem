@@ -1,7 +1,7 @@
 package de.PhilosophenProblem;
 
-import java.util.Arrays;
 import java.util.concurrent.Semaphore;
+import java.util.stream.IntStream;
 
 import de.PhilosophenProblem.Functional.Philosoph;
 
@@ -23,10 +23,10 @@ public class PhilosophersProblem {
 		
 		//Festlegung der Anzahl an Philosophen & Gabeln
 		int amount = 5;
+		
 		// Gabeln (in dem Fall) Semaphoren initialisierien
 		Semaphore[] sem = new Semaphore[amount];
-		
-		
+					
 		// Block, für alte Art Java Quellcode zu schreiben
 		if(runOLD) {
 			
@@ -45,18 +45,19 @@ public class PhilosophersProblem {
 		
 		if(runFunctional) {
 			
-			Arrays.stream(sem)
-			.map(x -> new Semaphore(1, true));
+			IntStream.range(0, amount)
+			.forEach(x -> {
+				sem[x] = new Semaphore(1, true);
+			});
 			
-			Arrays.stream(new int[] {0,1,2,3,4})
-			.forEach(x -> 
-				Philosoph.create(phil -> {
-					phil.id(x)
-						.linkeGabel(sem[x])
-						.rechteGabel(sem[(x+1) % amount])
-						.aufwecken();
-					phil.aufwecken();
-				})
+			IntStream.range(0, amount)
+			.forEach(x -> {
+				new Philosoph()
+					.id(x)
+					.linkeGabel(sem[x])
+					.rechteGabel(sem[(x+1) % amount])
+					.aufwecken();
+				}
 			);
 			
 		}
