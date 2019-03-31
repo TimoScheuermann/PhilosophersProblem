@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class Philosoph {
 
@@ -95,10 +94,7 @@ public class Philosoph {
 						linkeGabel.release();
 					}
 			}
-		
 		}).start();
 	}
-	
-	public static void create(Consumer<Philosoph> consumer) {}
 	
 }
