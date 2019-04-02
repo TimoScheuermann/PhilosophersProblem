@@ -45,11 +45,13 @@ public class PhilosophersProblem {
 		
 		if(runFunctional) {
 			
+			// Semaphoren initlialisieren
 			IntStream.range(0, amount)
 			.forEach(x -> {
 				sem[x] = new Semaphore(1, true);
 			});
 			
+			// Philosophrn erstellen und "aufwecken"
 			IntStream.range(0, amount)
 			.forEach(x -> {
 				new Philosoph()
