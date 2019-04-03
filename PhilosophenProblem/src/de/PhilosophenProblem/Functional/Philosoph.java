@@ -96,6 +96,7 @@ public class Philosoph {
 						linkeGabel.release();
 					}
 			}
+				
 		}).start();
 	}
 	

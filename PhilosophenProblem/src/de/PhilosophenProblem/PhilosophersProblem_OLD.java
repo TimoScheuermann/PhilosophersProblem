@@ -12,10 +12,15 @@ import de.PhilosophenProblem.Functional.Philosoph;
  * @since 27.03.2019
  *
  */
-public class PhilosophersProblem {
+public class PhilosophersProblem_OLD {
 
 	// Main method
-	public static void main(String[] args) {
+	public static void maind(String[] args) {
+		
+		MainScreen screen = new MainScreen();
+		
+		if(true) return;
+		
 		
 		// Schnelle Einstellung, welche Variante durchgespielt werden soll
 		boolean runOLD = false;
@@ -26,17 +31,21 @@ public class PhilosophersProblem {
 		
 		// Gabeln (in dem Fall) Semaphoren initialisierien
 		Semaphore[] sem = new Semaphore[amount];
+		
+		// Philosophenarray für Anzeige erstellen
+		Philosoph[] phils = new Philosoph[amount];
 					
 		// Block, für alte Art Java Quellcode zu schreiben
 		if(runOLD) {
 			
+			// Semaphoren initialisieren
 			for(int i = 0; i < amount; i ++) {
 				sem[i] = new Semaphore(1, true);
 			}
 			
 			// Philosophen initialisieren und starten
 			for(int i = 0; i < amount; i ++) {
-				// Jeweils linke und rechte Gabel zu weisen (vereinfacht geschrieben)
+				// Jeweils linke und rechte Gabel zuweisen (vereinfacht geschrieben)
 				new de.PhilosophenProblem.OldStyle.Philosoph(sem[i], sem[(i+1) % amount]).start();
 			}
 			
@@ -51,7 +60,7 @@ public class PhilosophersProblem {
 				sem[x] = new Semaphore(1, true);
 			});
 			
-			// Philosophrn erstellen und "aufwecken"
+			// Philosophen erstellen und "aufwecken"
 			IntStream.range(0, amount)
 			.forEach(x -> {
 				new Philosoph()
