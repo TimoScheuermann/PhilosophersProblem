@@ -1,9 +1,9 @@
-package de.PhilosophenProblem;
+package de.PhilosophenProblem.NoLongerInUse;
 
 import java.util.concurrent.Semaphore;
 import java.util.stream.IntStream;
 
-import de.PhilosophenProblem.Functional.Philosoph;
+import de.PhilosophenProblem.PhilosophFunctional;
 
 /**
  * 
@@ -14,13 +14,21 @@ import de.PhilosophenProblem.Functional.Philosoph;
  */
 public class PhilosophersProblem_OLD {
 
+	/*\
+	 * ###############################################
+	 * ##				 !IMPORTANT!				##
+	 * ##											##
+	 * ##	Diese Klasse wird nicht mehr benutzt!	##
+	 * ##	War in Version 1.x.x die Startklasse,	##
+	 * ##	wurde jedoch durch ein User-Interface	##
+	 * ##	ersetzt, in welchem die Einstellungen	##
+	 * ##	nicht Hardcoded sind. ~ LG Gruppe 2		##
+	 * ##											##
+	 * ###############################################
+	\*/
+	
 	// Main method
 	public static void maind(String[] args) {
-		
-		MainScreen screen = new MainScreen();
-		
-		if(true) return;
-		
 		
 		// Schnelle Einstellung, welche Variante durchgespielt werden soll
 		boolean runOLD = false;
@@ -31,9 +39,6 @@ public class PhilosophersProblem_OLD {
 		
 		// Gabeln (in dem Fall) Semaphoren initialisierien
 		Semaphore[] sem = new Semaphore[amount];
-		
-		// Philosophenarray für Anzeige erstellen
-		Philosoph[] phils = new Philosoph[amount];
 					
 		// Block, für alte Art Java Quellcode zu schreiben
 		if(runOLD) {
@@ -46,7 +51,7 @@ public class PhilosophersProblem_OLD {
 			// Philosophen initialisieren und starten
 			for(int i = 0; i < amount; i ++) {
 				// Jeweils linke und rechte Gabel zuweisen (vereinfacht geschrieben)
-				new de.PhilosophenProblem.OldStyle.Philosoph(sem[i], sem[(i+1) % amount]).start();
+				new de.PhilosophenProblem.PhilosophOldschool(sem[i], sem[(i+1) % amount]).start();
 			}
 			
 		}
@@ -63,7 +68,7 @@ public class PhilosophersProblem_OLD {
 			// Philosophen erstellen und "aufwecken"
 			IntStream.range(0, amount)
 			.forEach(x -> {
-				new Philosoph()
+				new PhilosophFunctional()
 					.id(x)
 					.linkeGabel(sem[x])
 					.rechteGabel(sem[(x+1) % amount])

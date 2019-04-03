@@ -1,4 +1,4 @@
-package de.PhilosophenProblem.Functional;
+package de.PhilosophenProblem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,41 +6,54 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.function.BiConsumer;
 
-public class Philosoph {
+public class PhilosophFunctional {
 
 	// Variablen zum ausführen
 	private Semaphore linkeGabel, rechteGabel;
 	private static Random rand = new Random();
-		
+	private boolean isEating;
+	
 	// Variablen für menschliches Verständnis
 	private int id;
 	private int nudelnVerzehrt = 0;
 	
 	// Setze ID
-	public Philosoph id(int i) {
+	public PhilosophFunctional id(int i) {
 		this.id = i;
 		return this;
 	};
 
 	// Setze linke Gabel
-	public Philosoph linkeGabel(Semaphore s) {
+	public PhilosophFunctional linkeGabel(Semaphore s) {
 		this.linkeGabel = s;
 		return this;
 	}
 	
 	// Setze rechte Gabel
-	public Philosoph rechteGabel(Semaphore s) {
+	public PhilosophFunctional rechteGabel(Semaphore s) {
 		this.rechteGabel = s;
 		return this;
 	}
 	
+	// Gibt zurück ob der Philosoph gerade isst
+	public boolean isEating() {
+		return isEating;
+	}
+
+	// Gibt zurück wie viele Suppen der Philosoph gegessen hat
+	public int getAmountOfSoups() {
+		return nudelnVerzehrt;
+	}
 	
 	// Einfache formatierte Textausgabe um den aktuellen Status
 	// des Philosophen auszugeben, inkl. Zeitverzögerung.	
 	BiConsumer<String, Double> log = (m, d) -> {
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 		
-		System.out.printf("[%s] [gegessen x%s] Philosoph #%s - %s\n", format.format(new Date(System.currentTimeMillis())), nudelnVerzehrt, id, m);
+		PhilosophenProblem.runningScreen.addLog(
+			String.format("[%s] [gegessen x%s] Philosoph #%s - %s", 
+			format.format(new Date(System.currentTimeMillis())), nudelnVerzehrt, id, m)
+		);
 		
 		try {
 			Thread.sleep((long) (d * (rand.nextInt(2000)+1000)));
@@ -79,10 +92,11 @@ public class Philosoph {
 							continue;
 						}
 					
-						// Genießt Nudeln, Anzahl erhöhen
+						// Er isst, genießt Nudeln, Anzahl erhöhen
+						isEating = true;
 						log.accept("Genießt seine Nudeln", 2.0d);
 						nudelnVerzehrt ++;
-							
+						
 						// Zunächst rechte Gabel zurück geben
 						rechteGabel.release();
 							
@@ -93,7 +107,9 @@ public class Philosoph {
 					} 
 					finally {
 						// Wird immer & muss immer ausgeführt (werden)
+						// "Legt Gabel zurück" und isst nicht mehr
 						linkeGabel.release();
+						isEating = false;
 					}
 			}
 				

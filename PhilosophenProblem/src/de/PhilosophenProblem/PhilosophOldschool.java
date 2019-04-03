@@ -1,32 +1,46 @@
-package de.PhilosophenProblem.OldStyle;
+package de.PhilosophenProblem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Philosoph extends Thread {
+public class PhilosophOldschool extends Thread {
 
 	// Variablen zum ausführen
 	private Semaphore linkeGabel, rechteGabel;
 	private static Random rand = new Random();
+	private boolean isEating;
 	
 	// Variablen für menschliches Verständnis
 	private static int philosophen = 0;
 	private int id, nudelnVerzehrt = 0;
 	
 	// Konstruktor
-	public Philosoph(Semaphore linkeGabel, Semaphore rechteGabel) {
+	public PhilosophOldschool(Semaphore linkeGabel, Semaphore rechteGabel) {
 		this.linkeGabel = linkeGabel;
 		this.rechteGabel = rechteGabel;
-		this.id = ++philosophen;
+		this.id = philosophen++;
+	}
+	
+	// Gibt zurück ob der Philosoph gerade isst
+	public boolean isEating() {
+		return isEating;
+	}
+
+	// Gibt zurück wie viele Suppen der Philosoph gegessen hat
+	public int getAmountOfSoups() {
+		return nudelnVerzehrt;
 	}
 	
 	// Einfache formatierte Textausgabe um den aktuellen Status
 	// des Philosophen auszugeben, inkl. Zeitverzoegerung.
 	private void log(String message, double multiplier) {
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-		System.out.printf("[%s] [gegessen x%s] Philosoph #%s - %s\n", format.format(new Date(System.currentTimeMillis())), nudelnVerzehrt, id, message);
+		PhilosophenProblem.runningScreen.addLog(
+			String.format("[%s] [gegessen x%s] Philosoph #%s - %s",
+			format.format(new Date(System.currentTimeMillis())), nudelnVerzehrt, id, message)
+		);
 		
 		try {
 			Thread.sleep((long) (multiplier * (rand.nextInt(2000)+1000)));
@@ -65,7 +79,8 @@ public class Philosoph extends Thread {
 					continue;
 				}
 				
-				// Genießt Nudeln, Anzahl erhöhen
+				// Er isst, genießt Nudeln, Anzahl erhöhen
+				isEating = true;
 				log("Genießt seine Nudeln", 2.0d);
 				nudelnVerzehrt ++;
 				
@@ -79,7 +94,9 @@ public class Philosoph extends Thread {
 			} 
 			finally {
 				// Wird immer & muss immer ausgeführt (werden)
+				// "Legt Gabel zurück" und isst nicht mehr
 				linkeGabel.release();
+				isEating = false;
 			}
 			
 		}
