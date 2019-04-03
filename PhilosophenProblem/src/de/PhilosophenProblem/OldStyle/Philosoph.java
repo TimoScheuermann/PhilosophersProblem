@@ -23,7 +23,7 @@ public class Philosoph extends Thread {
 	}
 	
 	// Einfache formatierte Textausgabe um den aktuellen Status
-	// des Philosophen auszugeben, inkl. Zeitverzögerung.
+	// des Philosophen auszugeben, inkl. Zeitverzoegerung.
 	private void log(String message, double multiplier) {
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 		System.out.printf("[%s] [gegessen x%s] Philosoph #%s - %s\n", format.format(new Date(System.currentTimeMillis())), nudelnVerzehrt, id, message);

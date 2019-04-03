@@ -16,7 +16,6 @@ public class Philosoph {
 	private int id;
 	private int nudelnVerzehrt = 0;
 	
-	
 	public Philosoph id(int i) {
 		this.id = i;
 		return this;

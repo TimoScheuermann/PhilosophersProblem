@@ -16,7 +16,6 @@ public class PhilosophersProblem {
 
 	public static void main(String[] args) {
 		
-		
 		// Schnelle Einstellung, welche Variante durchgespielt werden soll
 		boolean runOLD = false;
 		boolean runFunctional = true;
