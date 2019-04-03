@@ -6,7 +6,7 @@ import de.PhilosophenProblem.Frames.RunningScreen;
 /**
  * 
  * @author Timo Scheuermann, Andrei Berbescu, Nina Wolff, Julian Homburg
- * @version 2.0.1
+ * @version 2.0.2
  * @since 27.03.2019
  *
  */

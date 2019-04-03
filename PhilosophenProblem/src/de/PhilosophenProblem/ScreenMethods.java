@@ -57,7 +57,7 @@ public class ScreenMethods {
 	
 	// Custom Label für die Anzeige in der Mitte des "Tisches"
 	public static JLabel getAmountLabel(String text, int x, int y, int width, int height) {
-		JLabel label = new JLabel(text);
+		JLabel label = new JLabel(text, SwingConstants.CENTER);
 		label.setForeground(color);
 		label.setFont(font.deriveFont(Font.BOLD, 30.0f));
 		label.setBounds(x, y, width, height);
