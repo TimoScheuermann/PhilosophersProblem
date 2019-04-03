@@ -14,6 +14,7 @@ import de.PhilosophenProblem.Functional.Philosoph;
  */
 public class PhilosophersProblem {
 
+	// Main method
 	public static void main(String[] args) {
 		
 		// Schnelle Einstellung, welche Variante durchgespielt werden soll

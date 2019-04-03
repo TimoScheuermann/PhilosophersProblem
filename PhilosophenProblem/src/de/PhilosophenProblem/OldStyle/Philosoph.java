@@ -15,7 +15,7 @@ public class Philosoph extends Thread {
 	private static int philosophen = 0;
 	private int id, nudelnVerzehrt = 0;
 	
-	// Construktor
+	// Konstruktor
 	public Philosoph(Semaphore linkeGabel, Semaphore rechteGabel) {
 		this.linkeGabel = linkeGabel;
 		this.rechteGabel = rechteGabel;

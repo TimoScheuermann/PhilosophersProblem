@@ -16,16 +16,19 @@ public class Philosoph {
 	private int id;
 	private int nudelnVerzehrt = 0;
 	
+	// Setze ID
 	public Philosoph id(int i) {
 		this.id = i;
 		return this;
 	};
 
+	// Setze linke Gabel
 	public Philosoph linkeGabel(Semaphore s) {
 		this.linkeGabel = s;
 		return this;
 	}
 	
+	// Setze rechte Gabel
 	public Philosoph rechteGabel(Semaphore s) {
 		this.rechteGabel = s;
 		return this;
