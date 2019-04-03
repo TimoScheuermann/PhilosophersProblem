@@ -81,6 +81,7 @@ public class Philosoph extends Thread {
 				// Wird immer & muss immer ausgeführt (werden)
 				linkeGabel.release();
 			}
+			
 		}
 		
 	}
