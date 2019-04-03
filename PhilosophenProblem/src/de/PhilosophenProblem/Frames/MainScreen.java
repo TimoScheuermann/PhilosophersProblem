@@ -48,8 +48,8 @@ public class MainScreen extends JFrame {
 		Container con = new Container();
 		
 		con.add(currentStyle = ScreenMethods.getInfoLabel("Functional", getWidth()/2-130, 100, 260, 50));
-		con.add(button_next = ScreenMethods.getButton("→", getWidth()-100, 100, 55, 50));
-		con.add(button_prev = ScreenMethods.getButton("←", 45, 100, 55, 50));
+		con.add(button_next = ScreenMethods.getButton("\u2192", getWidth()-100, 100, 55, 50, new Color(52, 73, 94)));
+		con.add(button_prev = ScreenMethods.getButton("\u2190", 45, 100, 55, 50, new Color(52, 73, 94)));
 		
 		// Aktionen zum wechseln der Herangehensweise
 		button_next.addActionListener(new ActionListener() {
@@ -64,8 +64,7 @@ public class MainScreen extends JFrame {
 		});
 		
 		// Start-Button
-		con.add(button_start = ScreenMethods.getButton("Starte die Simulation", 50, 280, getWidth()-100, 50));
-		button_start.setBackground(new Color(231, 76, 60));
+		con.add(button_start = ScreenMethods.getButton("Starte die Simulation", 50, 280, getWidth()-100, 50, new Color(231, 76, 60)));
 		button_start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				
@@ -91,8 +90,14 @@ public class MainScreen extends JFrame {
 		con.add(ScreenMethods.getInfoLabel("Anzahl der Philosophen", 45, 180, 320, 50));
 		con.add(anzahlField = ScreenMethods.getTextField(400, 180, getWidth()-445, 50));
 		con.add(ScreenMethods.getLabel("Projektarbeit Gruppe 2", 20, 360, getWidth()-50, 40));
-		con.add(ScreenMethods.getLabel("<html>✶ Timo Scheuermann, Nina Wolff, Andrei Berbescu & Julian Homburg ✶</html>",
-				50, 360, getWidth()-100, 250, 15));
+		con.add(ScreenMethods.getLabel("<html><u>Gruppenteilnehmer:</u> Timo Scheuermann, Nina Wolff, Andrei Berbescu & Julian Homburg | (WWI18SEC)<br><br>"
+				+ "<i>\"Es sitzen fünf Philosophen an einem runden Tisch, und jeder hat einen Teller mit Spaghetti vor sich. Zum Essen von Spaghetti benötigt jeder Philosoph zwei Gabeln. Allerdings waren im Restaurant nur fünf Gabeln vorhanden, die nun zwischen den Tellern liegen. Die Philosophen können also nicht gleichzeitig speisen.\"</i>"
+				+ "<br>~ codeplanet.eu/tutorials/java/69-speisende-philosophen"
+				+ "</html>",
+				25, 390, getWidth()-50, 250, 15));
+		
+		con.add(ScreenMethods.getURLButton("GitHub-Repo", "https://github.com/TimoScheuermann/PhilosophersProblem/", 50, getHeight() - 60, 130, 20, 12));
+		con.add(ScreenMethods.getURLButton("Dokumentation", "www.elgoog.im/gravity", getWidth()-190, getHeight() - 60, 130, 20, 12));
 		
 		setContentPane(con);
 		

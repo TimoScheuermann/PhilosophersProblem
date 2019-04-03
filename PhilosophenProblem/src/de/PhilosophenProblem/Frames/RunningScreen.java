@@ -4,14 +4,21 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.util.concurrent.Semaphore;
 import java.util.stream.IntStream;
 
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
 import de.PhilosophenProblem.PhilosophFunctional;
@@ -68,7 +75,7 @@ public class RunningScreen extends JFrame {
 		
 		con.add(ScreenMethods.getAmountLabel("<html><b>" + amount + "</b> Philosophen</style>", getWidth()/2-125, center-60, 240, 30));
 		con.add(ScreenMethods.getLabel("<html><font color=#000000*>&#9899;</font> denkt nach</html>", 20, 350, 150, 25, 15));
-		con.add(ScreenMethods.getLabel("<html><font color=#27ae60*>&#9899;</font> isst Suppe</html>", getWidth()-135, 350, 110, 25, 15));
+		con.add(ScreenMethods.getLabel("<html><font color=#27ae60*>&#9899;</font> isst Nudeln</html>", getWidth()-140, 350, 110, 25, 15));
 		con.add(ScreenMethods.getLabel("", 12, 380, getWidth()-40, 1));
 		
 		// Erstellen der "Konsole"
@@ -82,9 +89,31 @@ public class RunningScreen extends JFrame {
 		// bei dieser Grundeinstellungen festlegen
 		// und zum Container hinzufügen.
 		JScrollPane scrollPane = new JScrollPane(info);
+		scrollPane.setBorder(null);
 		scrollPane.setBounds(12, 390, getWidth()-40, getHeight() - 435);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		
+		// Custom Scrollbar implementieren, die zum restlichen Design passt
+		scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+			@Override
+			protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
+				Graphics2D g2 = (Graphics2D) g.create();
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				Color color = null;
+				JScrollBar sb = (JScrollBar) c;
+				
+				// Farben für unterschiedliche Stadien setzen
+				if (!sb.isEnabled() || r.width > r.height) return; 
+				else if (isDragging | isThumbRollover()) color = new Color(231, 76, 60).darker();
+				else color = new Color(231, 76, 60);
+				
+				// Bar zeichnen
+				g2.setPaint(color);
+				g2.fillRoundRect(r.x+4, r.y+1, r.width-8, r.height, (r.width-8), (r.width-8));
+			}
+			// Button überschreiben, damit keine angezeigt werden
+			@Override protected JButton createDecreaseButton(int orientation) { JButton button = new JButton(); button.setSize(1, 1); button.setVisible(false); return button; }
+			@Override protected JButton createIncreaseButton(int orientation) { return createDecreaseButton(orientation); }
+		});
 		con.add(scrollPane);
 		
 		setContentPane(con);
@@ -104,7 +133,7 @@ public class RunningScreen extends JFrame {
 		new Thread(() -> {
 			
 			// Kurze Info für den Anwender rausschicken
-			info.append("### Gedanken aller Philosophen ###");
+			info.append(" ### Gedanken aller Philosophen ###");
 			
 			while(true) {
 				try {
@@ -183,7 +212,7 @@ public class RunningScreen extends JFrame {
 	
 	// Nachrichten zur "Konsole" hinzufügen
 	public void addLog(String message) {
-		info.append("\n" + message);
+		info.append("\n " + message);
 	}
 	
 	
@@ -195,7 +224,12 @@ public class RunningScreen extends JFrame {
 		if(background != null) add(background);
 		
 		super.paint(g);
-
+		
+		// Zeichnungseinstellung Für langsameres, dafür schärferes zeichnen einstellen
+		Graphics2D g2 = (Graphics2D) g;
+		RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setRenderingHints(hints);
+		
 		// Wenn sich noch keine Philosophen im Array befinden -> STOP
 		if(isFunctional && func_Phils == null) return;
 		if(!isFunctional && old_Phils == null) return;
@@ -204,21 +238,23 @@ public class RunningScreen extends JFrame {
 		for(int i = 0; i < amount; i ++) {
 			
 			// Mit polaren Koordinaten, sehr bequem und unkompliziert.
-			double angle = 2*Math.PI/amount*i + Math.PI/7;
+			double angle = ((2*Math.PI)/amount)*i + 0.3;
 			double x = center + dotScale * Math.cos(angle);
 			double y = center + dotScale * Math.sin(angle);
 			
 			// Wenn Philosoph ist grüner Punkt, ansonsten schwarz
 			if(isEating(i)) g.setColor(new Color(39, 174, 96));
-			else g.setColor(Color.BLACK);
+			else g2.setColor(Color.BLACK);
 			// Punkt zeichnen
-			g.fillOval((int) x, (int) y - 30, dotSize, dotSize);
+			g2.fillOval((int) x, (int) y - 30, dotSize, dotSize);
 			
 			// In den Kreis die Anzahl der gegessenen Suppen
 			// als zusätzliche Information darüber schreiben.
-			g.setFont(ScreenMethods.font.deriveFont(Font.PLAIN, 12));
-			g.setColor(Color.WHITE);
-			g.drawString("x" + getAmountOfSoups(i), (int) x + 5, (int) y - dotSize/3);
+			g2.setFont(ScreenMethods.font.deriveFont(Font.PLAIN, 12));
+			g2.setColor(Color.WHITE);
+			
+			int amount = getAmountOfSoups(i);
+			g2.drawString("x" + amount, (int) x + (amount < 10 ? 7 : 4), (int) y - dotSize/3);
 			
 		}
 		

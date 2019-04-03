@@ -45,7 +45,7 @@ public class PhilosophFunctional {
 		return nudelnVerzehrt;
 	}
 	
-	// Einfache formatierte Textausgabe um den aktuellen Status
+	// Einfache formatierte Textausgabe, um den aktuellen Status
 	// des Philosophen auszugeben, inkl. Zeitverzögerung.	
 	BiConsumer<String, Double> log = (m, d) -> {
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
@@ -84,9 +84,10 @@ public class PhilosophFunctional {
 							
 						// Linke Gabel ist nun im eigenen Besitz -> Versuche rechte Gabel
 						// Aufzunehmen
-						// Wenn nicht möglich -> Information ausgeben
-						//					  -> Sprung zu finally
-						//					  -> Nach kurzer Nachdenkepause neuer Versuch
+						// Wenn nicht möglich 
+						// -> Information ausgeben
+						// -> Sprung zu finally
+						// -> Nach kurzer Nachdenkepause neuer Versuch
 						if(!rechteGabel.tryAcquire()) {
 							log.accept("Konnte nicht essen...", 0.5d);
 							continue;

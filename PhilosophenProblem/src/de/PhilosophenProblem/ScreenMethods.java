@@ -1,11 +1,16 @@
 package de.PhilosophenProblem;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -24,7 +29,7 @@ import javax.swing.SwingConstants;
 public class ScreenMethods {
 	
 	// Standard Font & Farbe
-	public static Font font = new Font("SF Pro Text", Font.PLAIN, 20);
+	public static Font font = new Font("", Font.PLAIN, 20);
 	static Color color = new Color(44, 62, 80);
 	
 	// Label für große Überschriften
@@ -84,7 +89,7 @@ public class ScreenMethods {
 		JTextField field = new JTextField(1);
 		field.setHorizontalAlignment(0);
 		field.setFont(font.deriveFont(Font.PLAIN, 20.0f));
-		field.setForeground(Color.BLACK);
+		field.setForeground(color);
 		field.setOpaque(false);
 		field.setBounds(x, y, width, height);
 		field.setFont(font);
@@ -113,27 +118,89 @@ public class ScreenMethods {
 	}
 	
 	// Button für Start und Varianten Wahl der Problemlösung
-	public static JButton getButton(String text, int x, int y, int width, int height) {
+	public static JButton getButton(String text, int x, int y, int width, int height, Color color) {
 		JButton button = new JButton(text);
 		button.setFont(font.deriveFont(Font.BOLD));
 		button.setForeground(Color.WHITE);
-		button.setBackground(Color.DARK_GRAY);
+		button.setBackground(color);
+		button.setBorder(BorderFactory.createLineBorder(color, 0, true));
 		button.setIgnoreRepaint(true);
 		
 		button.addMouseListener(new MouseAdapter() {
 			
+			Color c = button.getBackground();
+			
+			// "Animation" damit User sieht, ob ausgewählt oder nicht
 			@Override public void mouseExited(MouseEvent e) {
-				button.setBorder(BorderFactory.createLineBorder(new Color(0,0,0,0), 0, true));
+				button.setBackground(c);
+				button.setBorder(BorderFactory.createLineBorder(c, 0, true));
 			}
 			
 			@Override public void mouseEntered(MouseEvent e) {
-				button.setBorder(BorderFactory.createLineBorder(color, 2, true));
+				button.setBorder(BorderFactory.createLineBorder(c.brighter().brighter(), 3, true));
+				button.setBackground(c.brighter());
 			}
 			
 		});
 		
 		button.setBounds(x, y, width, height);
 		button.setFocusable(false);
+		return button;
+	}
+	
+	// Spezielle Buttons für den URL Aufruf
+	public static JButton getURLButton(String text, String url, int x, int y, int width, int height, int size) {
+		JButton button = new JButton(text);
+		button.setBounds(x, y, width, height);
+		button.setFont(font.deriveFont(Font.PLAIN, size));
+		button.setFocusable(false);
+		button.setForeground(color);
+		button.setOpaque(false);
+		button.setContentAreaFilled(false);
+		button.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(0, 0, 0, 50)));
+		
+		button.addMouseListener(new MouseListener() {
+			
+			String text_orig = text;
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+				// URL öffnen, wenn Gerät supported über Desktop.class
+				if(Desktop.isDesktopSupported()){
+		            Desktop desktop = Desktop.getDesktop();
+		            try { desktop.browse(new URI(url)); }
+		            catch (IOException | URISyntaxException ex) {
+		                ex.printStackTrace();
+		            }
+		        }
+				// Ansonsten, Konsolen-Befehl
+				else {
+		            Runtime runtime = Runtime.getRuntime();
+		            try { runtime.exec("xdg-open " + url); }
+		            catch (IOException ex) {
+		                ex.printStackTrace();
+		            }
+		        }
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(0, 0, 0, 50)));
+				button.setText(text_orig);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				button.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, color));
+				button.setText("\u25B6 " + text + " \u25C0");
+			}
+			
+			@Override public void mouseClicked(MouseEvent e) {}
+			@Override public void mousePressed(MouseEvent e) {}
+			
+		});
+		
 		return button;
 	}
 

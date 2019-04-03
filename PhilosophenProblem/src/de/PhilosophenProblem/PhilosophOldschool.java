@@ -33,7 +33,7 @@ public class PhilosophOldschool extends Thread {
 		return nudelnVerzehrt;
 	}
 	
-	// Einfache formatierte Textausgabe um den aktuellen Status
+	// Einfache formatierte Textausgabe, um den aktuellen Status
 	// des Philosophen auszugeben, inkl. Zeitverzoegerung.
 	private void log(String message, double multiplier) {
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
@@ -71,9 +71,10 @@ public class PhilosophOldschool extends Thread {
 				
 				// Linke Gabel ist nun im eigenen Besitz -> Versuche rechte Gabel
 				// Aufzunehmen
-				// Wenn nicht möglich -> Information ausgeben
-				//					  -> Sprung zu finally
-				//					  -> Nach kurzer Nachdenkepause neuer Versuch
+				// Wenn nicht möglich 
+				// -> Information ausgeben
+				// -> Sprung zu finally
+				// -> Nach kurzer Nachdenkepause neuer Versuch
 				if(!rechteGabel.tryAcquire()) {
 					log("Konnte nicht essen...", 0.5d);
 					continue;
