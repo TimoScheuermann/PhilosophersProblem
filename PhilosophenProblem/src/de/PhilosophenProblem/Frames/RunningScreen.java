@@ -45,9 +45,9 @@ public class RunningScreen extends JFrame {
 	
 	// Konstanten zur Festlegung der Positionen der Objekte im Frame
 	private final int 
-		centerX = 250, 
-		dotSize = 30, 
-		dotScale = 150, 
+		centerX = 250,
+		dotSize = 30,
+		dotScale = 150,
 		center = centerX - dotSize/2;
 
 	// Konstruktor mit Übergabe der Variante, der Anzahl und des Hintergrunds,
