@@ -1,0 +1,79 @@
+body {
+	font-family: 'Montserrat', sans-serif;	
+	background-color: #fafafa;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4 {
+	color: #111;
+}
+
+h1 {
+	font-weight: 800;
+	font-size: 2.7vw;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+	text-align: center;
+	line-height: 2,7vw;
+}
+
+h2 {
+	font-weight: 600;
+	font-size: 2.1vw;
+	line-height: 2.1vw;
+}
+
+h3 {
+	font-weight: 400;
+	font-size: 1.6vw;
+	line-height: 1.6vw;
+}
+
+p {
+	font-weight: 400;
+	font-size: 1.3vw;
+	line-height: 1.7vw;
+}
+
+.header {
+	width: 100%;
+	top: 0;
+	height: 5.5vw;
+	line-height: 5.5vw;
+	position: fixed;
+	background-color: rgba(45,45,45,0.9);
+	padding-left: 10%;
+	padding-right: 10%;
+	z-index: 100;
+}
+.item {
+	display: inline-block;
+	color: #fff;
+	font-size: 1.2vw;
+	margin: 0 1.2vw 0 1.2vw;
+	font-weight: 600;
+	height: 3.5vw;
+	cursor: pointer;
+	user-select: none;
+}
+.item:first-child {
+	font-size: 1.7vw;
+	font-weight: 800;
+	text-transform: uppercase;
+	float: left;
+	margin-right: 2.5vw;
+}
+.item:not(:first-child) {
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0 .4vw 0 .4vw;
+}
+.item:not(:first-child):hover {
+	color: #fff;
+	border-bottom: 2px solid rgb(255, 255, 255, 0.8);
+}
+
+.content {
+	margin-top: 8.5vw;
+	padding-left: 15%;
+	padding-right: 15%;
+}
