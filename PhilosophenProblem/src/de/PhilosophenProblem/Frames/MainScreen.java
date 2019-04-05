@@ -98,7 +98,7 @@ public class MainScreen extends JFrame {
 				25, 390, getWidth()-50, 250, 15));
 		
 		con.add(ScreenMethods.getURLButton("GitHub-Repo", "https://github.com/TimoScheuermann/PhilosophersProblem/", 50, getHeight() - 60, 130, 20, 12));
-		con.add(ScreenMethods.getURLButton("Dokumentation", "www.elgoog.im/gravity", getWidth()-190, getHeight() - 60, 130, 20, 12));
+		con.add(ScreenMethods.getURLButton("Dokumentation", "https://timoscheuermann.github.io/PhilosophersProblem/", getWidth()-190, getHeight() - 60, 130, 20, 12));
 		
 		setContentPane(con);
 		
