@@ -1,6 +1,13 @@
+/*
+CSS von (c) Timo Scheuermann
+*/
+
+/*
+	--> GENERAL <--
+*/
 body {
 	font-family: 'Montserrat', sans-serif;	
-	background-color: #fafafa;
+	background-color: #f9f9f9;
 	margin: 0;
 	padding: 0;
 }
@@ -12,9 +19,10 @@ h1, h2, h3, h4 {
 h1 {
 	font-weight: 800;
 	font-size: 2.7vw;
-	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+	border-bottom: 0.1vw solid rgba(0, 0, 0, 0.3);
 	text-align: center;
 	line-height: 2,7vw;
+	padding-top: 8.5vw;
 }
 
 h2 {
@@ -27,6 +35,11 @@ h3 {
 	font-weight: 400;
 	font-size: 1.6vw;
 	line-height: 1.6vw;
+	margin-bottom: -0.4vw;
+}
+
+i {
+	color: rgba(0, 0, 0, 0.8);
 }
 
 p {
@@ -35,13 +48,25 @@ p {
 	line-height: 1.7vw;
 }
 
+a {
+	text-decoration: none;
+}
+
+.eoc {
+	height: 2vw;
+}
+
+/*
+	--> NAVBAR <--
+*/
 .header {
 	width: 100%;
 	top: 0;
 	height: 5.5vw;
 	line-height: 5.5vw;
 	position: fixed;
-	background-color: rgba(45,45,45,0.9);
+	/*background-color: rgba(45,45,45,0.9);*/
+	background-color: rgba(30, 38, 44, 0.9);
 	padding-left: 10%;
 	padding-right: 10%;
 	z-index: 100;
@@ -68,12 +93,114 @@ p {
 	padding: 0 .4vw 0 .4vw;
 }
 .item:not(:first-child):hover {
-	color: #fff;
-	border-bottom: 2px solid rgb(255, 255, 255, 0.8);
+	animation: navHover 0.5s forwards;
+}
+@keyframes navHover {
+	100% {
+		color: #fff;
+		border-bottom: 0.1vw solid rgb(255, 255, 255, 0.8);
+	}
+	0% {
+		color: rgba(255, 255, 255, 0.8);
+		border-bottom: 0 solid #fff;
+	}
 }
 
+/*
+	--> CONTENT AREA <--
+*/
 .content {
-	margin-top: 8.5vw;
-	padding-left: 15%;
-	padding-right: 15%;
+}
+
+.anchor {
+	position: absolute; 
+	z-index: -5; 
+	margin-top: -5.5vw; 
+	height: 1px;
+}
+
+.paragraph {
+	padding: 1vw 15% 1vw 15%;
+	display: block;
+	background-image: linear-gradient(#fff, #f9f9f9);
+}
+
+.list {
+	display: block;
+	font-size: 1.2vw;
+	line-height: 1.5vw;
+	padding-left: 2%;
+	margin-bottom: .5vw;
+}
+
+.list2 {
+	display: block;
+	font-size: 1.2vw;
+	line-height: 1.5vw;
+	padding-left: 4%;
+	margin-bottom: .5vw;
+	margin-top: .3vw;
+}
+
+.imageTextContainer {
+	width: 100%;
+	display: inline-block;
+}
+.imageNextToText {
+	width: 20vw;
+	display: inline-block;
+	background: rgba(0, 255, 0, 0.5);
+	background: #666;
+	margin-bottom: 3vw;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.imageDescription {
+	background: #fff;
+	text-align: center;
+	font-size: 1vw;
+	padding: 2vw;
+}
+
+.imageNextToText img {
+	width: 20vw;
+}
+
+.textNextToImage {
+	display: inline-block;
+	width: calc(100% - 24vw);
+	padding-top: 2vw;
+	font-size: 1.3vw;
+	
+	.left {
+		padding-right: 2vw;
+	}
+	.right {
+		padding-left: 2 vw;
+	}
+	
+}
+
+.textNextToImage a {
+	color: #e74c3c;
+	text-decoration: none;
+}
+
+.textNextToImage a:hover {
+	text-decoration: underline;
+}
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+.footer {
+	display: block;
+	margin-top: 8vw;
+	width: 100%;
+	height: 15vw;
+	background: rgba(30, 38, 44, 0.9);
 }

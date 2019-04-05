@@ -5,27 +5,296 @@
 		<title>Philosophen Problem</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<script src="js/script.js"></script>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 	</head>
 	<body>
 	
-		<div class="header">
+		<div class="header" id="navbar">
 			<div class="item">Dokumentation</div>
-			<div class="item">Problemstellung</div>
-			<div class="item">Überlegungen</div>
-			<div class="item">Lösungen</div>
-			<div class="item">Entwurf UI</div>
-			<div class="item">Ergebnis UI</div>
+			<a class="item" href="#problem">Problemstellung</a>
+			<a class="item" href="#ideas">Überlegungen</a>
+			<a class="item" href="#solutions">Lösungen</a>
+			<a class="item" href="#entwurf">Entwurf UI</a>
+			<a class="item" href="#ergebnis">Ergebnis UI</a>
 		</div>
 	
 		<div class="content">
-			<h1>Philosohen Problem</h1>
-			<h2>Problemstellung</h2>
-			<p>An einem runden Tisch sitzen eine Anzahl von Philosophen, die zusammen Speisen wollen. Dabei hat jeder Philosoph einen eigenen Teller. Zwischen den Tellern ist jedoch nur  eine Gabel, zum essen werden aber zwei Gabeln benötigt. Greift ein Philosoph nach einer Gabel, darf er nur die Gabeln nehmen, die direkt neben dem eigenen Teller liegen. Die Philosophen können also nicht zeitgleich essen. Isst ein Philosoph gerade nicht, dann denkt er über philosophische Fragen nach.
-			<br>Will ein Philosoph nun essen, nimmt er zunächst die linke und dann die rechte Gabel – falls diese jeweils zur Verfügung stehen.
-			<br>Durch die Lösung dieses Problems kann in der Informatik verhindert werden, dass Fehler, die bei einer gleichzeitigen Benutzung eines Betriebsmittels, sogenannte dead locks, auftreten.</p>
-			<div class="item">Test Welt</div>
+			
+			<div id="problem" class="anchor"></div>
+			<div class="paragraph">
+				
+				<h1 id="title">5 Philosophen Problem</h1>
+			
+				<h2>Problemstellung</h2>
+				<p>
+					An einem runden Tisch sitzen eine Anzahl von Philosophen, die zusammen Speisen wollen. Dabei hat jeder Philosoph einen eigenen Teller. Zwischen den Tellern ist jedoch nur  eine Gabel, zum essen werden aber zwei Gabeln benötigt. Greift ein Philosoph nach einer Gabel, darf er nur die Gabeln nehmen, die direkt neben dem eigenen Teller liegen. Die Philosophen können also nicht zeitgleich essen. Isst ein Philosoph gerade nicht, dann denkt er über philosophische Fragen nach.
+				<br>Will ein Philosoph nun essen, nimmt er zunächst die linke und dann die rechte Gabel – falls diese jeweils zur Verfügung stehen.
+				<br>Durch die Lösung dieses Problems kann in der Informatik verhindert werden, dass Fehler, die bei einer gleichzeitigen Benutzung eines Betriebsmittels, sogenannte dead locks, auftreten.
+				</p>
+			</div>
+			
+			<div id="ideas" class="anchor"></div>
+			<div class="paragraph">
+				<h2>Überlegungen</h2>
+				<h3>Lösung über Semaphoren</h3>
+				<p>Jedem zu schützenden Betriebsmittel wird eine Semaphore zugewiesen, die jeweils eine eigene Warteschlange für die Prozesse, die auf das Betriebsmittel zugreifen wollen, führt. Sie ist eine Variable, die unter anderem dafür zuständig ist, einen Prozess schlafen zu legen oder zu wecken. Es gibt also zwei atomare Operationen für eine Semaphore: Anfrage und Freigabe. Der Grundsatz der Überlegung kommt aus der Vorlesung “Betriebssysteme” von Herrn Dehoff.</p>
+				<h3>Lösung über funktionale Programmierung</h3>
+				<p>Keine Synchronisation nötig, da jede Funktion selbst einen eigenen Thread startet. Der Grundsatz der Überlegung kommt aus der Vorlesung, die diesem Projekt zugrunde liegt.</p>
+			</div>
+			
+			<div id="solutions" class="anchor"></div>
+			<div class="paragraph">
+				<h2>Lösungen</h2>
+				<h3>Main-Methode (PhilosophenProblem)</h3>
+				
+				<p>Kopf [Z. 1 - 12]</p>
+				<div class="list">
+					- Verschiedene Imports und Variablendeklaration runningScreen
+				</div>
+				
+				<p>Main-Methode [Z. 13 - 27]</p>
+				<div class="list">
+					- Öffnet das Frame, welches in der grafischen Oberfläche ausgewählt wurde (MainScreen)
+				</div>
+				
+				<!-- -->
+				
+				<h3>ScreenMethods</h3>
+				<p></p>
+				<div class="list">
+					- “Diese Klasse beinhaltet im wesentlichen, alle Objekte, die für die Anzeige benötigt werden, für ein einheitliches &nbsp;&nbsp;&nbsp;&nbsp;Design des UI's in Methoden zusammengefasst.”
+					<br>- Gehen wir hier nicht näher darauf ein, da es unrelevant für die Problemstellung ist
+				</div>
+				
+				<!-- -->
+				<h3>Herkömmlichen Programmierung (PhilosophOldSchool.java)</h3>
+				
+				<p>Kopf [Z. 1 - 24]</p>
+				<div class="list">
+					- Verschiedene Imports und Deklarierung der Variablen
+					<br>- Erzeugung des Konstruktors für die Philosophen Klasse
+				</div>
+				
+				<p>Body [Z. 25 - 107]</p>
+				<div class="list">
+					Methode <i>isEating():boolean</i>
+					<br>&nbsp;» Gibt zurück ob der Philosoph gerade isst
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>getAmountOfSoups():int</i>
+					<br>&nbsp;» Gibt zurück, wie viele Suppen der Philosoph bereits gegessen hat
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>log():void</i>
+					<br>&nbsp;» Definiert die Konsolenausgabe (Zeitstempel, verzehrte Nudeln, Philosophen-ID, Status)
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>run():void</i>
+					<br>&nbsp;» Initialisierung der Endlosschleife (man könnte hier eine Abbruchbedingung einbauen, bei der man angibt, wie &nbsp;&nbsp;&nbsp;&nbsp;viele Portionen jeder gegessen haben soll):
+					<br>&nbsp;» Aufnahme der linken und dann der rechten Gabel, durch Methoden aus der Klasse Semaphoren (.acquire() -> &nbsp;&nbsp;&nbsp;&nbsp;kann Fehler werfen)
+					<div class="list2">
+						
+						Fehler bei Aufnahme der linken Gabel im catch-Block:
+						<br>&nbsp;» “Fehler bei der Gabelaufnahme”<br>
+						
+						<br>Fehler bei Aufnahme der rechten Gabel: 
+						<br>&nbsp;» “Konnte nicht essen…”<br>
+						
+						<br>Kein Fehler: 
+						<br>&nbsp;» “Genießt seine Nudeln”
+						
+					</div>
+					&nbsp;&nbsp;&nbsp;&nbsp;Am Ende legt der Philosoph die rechte und die linke Gabel (finally) zurück.
+				</div>
+				
+				<h3>Funktionalen Programmierung (PhilosophFunctional)</h3>
+				<p>Kopf [Z. 1 - 19]</p>
+				<div class="list">
+					Verschiedene Imports und Deklarierung der Variablen
+				</div>
+				
+				<p>Body [Z. 20 - 120]</p>
+				<div class="list">
+					Methode <i>id()</i>, <i>rechteGabel()</i>, <i>linkeGabel()</i>
+					<br>&nbsp;» Setzen der Variablen und Rückgabe des Philosophen
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>isEating():boolean</i>
+					<br>&nbsp;» Gibt zurück ob der Philosoph gerade isst
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>getAmountOfSoups():int</i>
+					<br>&nbsp;» Gibt zurück, wie viele Suppen der Philosoph bereits gegessen hat
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>log():void</i>
+					<br>&nbsp;» Definiert die Konsolenausgabe (Zeitstempel, verzehrte Nudeln, Philosophen-ID, Status)
+					<br>&nbsp;» Biconsumer: Lambda Ausdruck zur Zuweisung eines funktionalen Programmabschnitts
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>aufwecken():void</i>
+					<br>&nbsp;» Start eines Threads über funktionalen Aufruf, startet die Endlosschleife
+					<br>&nbsp;» Ablauf der Endlosschleife analog der klassischen Programmierung
+					<br>
+				</div>
+				
+				<h3>Main-Screen [grafische Oberfläche - erbt von JFrame]</h3>
+				<p></p>
+				<div class="list">
+					- Erzeugt das Startfenster
+					<br>- Gehen wir hier nicht näher drauf ein, da es unrelevant für die Problemstellung ist
+				</div>
+				
+				<h3>Running-Screen [grafische Oberfläche - erbt von JFrame]</h3>
+				
+				<p>Kopf [Z. 1 - 52]</p>
+				<div class="list">
+					- Verschiedene Imports und Deklarierung der Variablen
+				</div>
+				
+				<p>Body [Z. 53 - 263]</p>
+				<div class="list">
+					Konstruktor RunningScreen() [Z.53 - 151]
+					<div class="list2">
+						<br>[Z. 53 - 63]:<br> Hier wird angegeben, welche Variante wir verwenden (Funktional oder Klassisch), die Variablen werden gesetzt
+						<br><br>[Z. 64 - 120]:<br> Es werden Darstellungsbezogene Aufrufe verwendet, auf die wir hier nicht näher eingehen, da sie nicht zentral für die Lösung des Problems sind. Grob: Ausgabefenster mit Konsolenausgabe wird erstellt. 
+						<br><br>[Z. 121 - 128]:<br> Wir prüfen welche Variante gespielt werden soll, und übergeben Ihr die Anzahl der Philosophen und der Gabeln jeweils an initFunc oder initOld
+						<br><br>[Z.129 - 151]:<br> Neuer Thread, der die Anzeige (grafische Oberfläche) aktuell hält.
+					</div>
+				</div>
+				
+				<p></p>
+				<div class="list">
+					Methode <i>initFunc():void</i> [Z. 152 - 178]
+					<br>&nbsp;» Ein Array wird erstellt und über den funktionalen Aufruf anhand von forEach befüllt. Erstellung der &nbsp;&nbsp;&nbsp;&nbsp;Philosophen, Zuweisung der linken und rechten Gabel. Die aufwecken()-Methode aus der funktionalen Klasse &nbsp;&nbsp;&nbsp;&nbsp;Philosophen wird aufgerufen.
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>initOld():void</i> [Z. 179 - 195]
+					<br>&nbsp;» Ein Array wird erstellt und über die for-Schleife befüllt. Erstellung der Philosophen, Zuweisung der linken und &nbsp;&nbsp;&nbsp;&nbsp;rechten Gabel; Thread wird gestartet, dieser ruft die run()-Methode.
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>isEating():int</i> [Z. 196 - 203]
+					<br>&nbsp;» Prüft, ob ein Philosoph gerade am essen ist (boolean), anhand einer if-Anweisung.
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>getAmountOfSoups():int</i> [Z. 204 - 211]
+					<br>&nbsp;» Prüft, wie viel ein Philosoph bereits gegessen hat, anhand einer if-Anweisung.
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>addLog():void</i> [Z. 212 - 218]
+					<br>&nbsp;» Gibt den Informationstext auf der Konsole im Ausgabefenster aus.
+					<br><br>
+				</div>
+				
+				<div class="list">
+					Methode <i>paint():void</i> [Z. 219 - 263]
+					<br>&nbsp;» Ist eine darstellungsbezogene Methode, auf die wir hier nicht näher eingehen, da sie nicht zentral für die &nbsp;&nbsp;&nbsp;&nbsp;Lösung des Problems sind. Grobe Beschreibung: Philosophen werden im Kreis am Tisch angeordnet. Dieser &nbsp;&nbsp;&nbsp;&nbsp;Punkt färbt sich grün, wenn der Philosoph gerade am essen ist.
+					<br><br>
+				</div>
+				
+			</div>
+			
+			<div id="entwurf" class="anchor"></div>
+			<div class="paragraph">
+			
+				<h2>Entwurf der grafischen Oberfläche</h2>
+				
+				<div class="imageTextContainer">
+					<div class="imageNextToText right">
+						<span><img src="img/concept.png"></span>
+						<div class="imageDescription">Abb.1: Entwurf der Benutzeroberfläche</div>
+					</div>
+					<div class="textNextToImage left">
+						Beim Starten des Programms öffnet sich das linke Fenster
+						<div class="list">
+							<br>» Hier lassen sich die Anzahl der Philosophen und die Art der Lösung &nbsp;&nbsp;&nbsp;(klassisch oder funktional) einstellen
+						</div>
+						<br>
+						Beim Drücken der “Start”-Schaltfläche öffnet sich das rechte Fenster
+						<div class="list">
+							<br>» Im oberen Bereich werden die Philosophen und deren Zustand jeweils &nbsp;&nbsp;&nbsp;als farbige Punkte dargestellt
+							<br>» Im unteren Bereich wird die Konsolenausgabe angezeigt
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="ergebnis" class="anchor"></div>
+			<div class="paragraph">
+			
+				<h2>Ergebnis der Grafischen Oberfläche</h2>
+				
+				<div class="imageTextContainer">
+					<div class="imageNextToText right">
+						<span><img src="img/welcome.png"></span>
+						<div class="imageDescription">Abb.2: Startfenster mit Eingabe und Auswahlmöglichkeiten</div>
+					</div>
+					<div class="textNextToImage left">
+						Anhand der Pfeiltasten kann man zwischen funktionaler und klassischer Ausführung auswählen, welche abgespielt werden soll.
+						<br><br>Eingabe der Anzahl der Philosophen und somit auch der Anzahl der Gabeln
+						<br><br>Im unteren Bereich wird das Problem der speisenden Philosophen noch mal erläutert:
+						<br><br>“Es sitzen fünf Philosophen an einem runden Tisch, und jeder hat einen Teller mit Spaghetti vor sich. Zum Essen von Spaghetti benötigt jeder Philosoph zwei Gabeln. Allerdings waren im Restaurant nur fünf Gabeln vorhanden, die nun zwischen den Tellern liegen. Die Philosophen können also nicht gleichzeitig speisen.”
+						<br><br>Quelle: <a href="http://www.codeplanet.eu/tutorials/java/69-speisende-philosophen.html">Codeplanet</a>
+					</div>
+				</div>
+				
+				<div class="imageTextContainer">
+					<div class="imageNextToText left">
+						<span><img src="img/running.png"></span>
+						<div class="imageDescription">Abb. 3: Ausgabefenster</div>
+					</div>
+					<div class="textNextToImage right">
+						Im oberen Bereich kann man anhand der vereinfachten Grafik sehen, welche der Philosophen gerade am essen sind (grüne/r Punkt/e) und welche philosophischen Fragen nachgehen (schwarze/r Punkt/e)
+						<br><br>Im unteren Bereich wird die Konsolenausgabe gemacht. Dabei enthält jede Ausgabe einen Zeitstempel, wie viele Portionen gegessen wurden, welcher Philosoph davon betroffen ist und ob er gerade versucht die Gabeln aufzunehmen (“Versucht zu essen”), ob das Essen funktioniert hat, also beide Gabeln frei waren (“Genießt seine Nudeln”), ob der Versuch zu essen fehlgeschlagen ist, da nicht beide Gabeln frei waren (“Konnte nicht essen...”) oder ob er gerade über philosophische Theorien nachdenkt (“Denkt nach…”)
+					</div>
+				</div>
+			
+			</div>
+			
+		</div>
+	
+		<div class="footer">
 		</div>
 	
 	</body>
 </html>
+
+<script>
+
+	$(function(){
+		setInterval(function(){
+			$("#title").html((Math.floor(Math.random() * 100) + 1) + " Philosophen Problem");
+		}, 500);
+	});
+	
+	$("navbar").find("a").click(function(e) {
+		e.preventDefault();
+		var section = $(this).attr("href");
+		$("html, body").animate({
+			scrollTop: $(section).offset().top-100
+		});
+	});
+</script>
