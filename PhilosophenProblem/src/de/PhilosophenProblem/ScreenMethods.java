@@ -98,9 +98,8 @@ public class ScreenMethods {
 			@Override 
 			public void keyTyped(KeyEvent e) {
 				
-				/*
-				 * Überprüfung, dass auch wirklich nur zahlen eingegeben werden < 1000
-				 */
+				 /*\ Überprüfung, dass auch wirklich nur zahlen eingegeben werden < 1000
+				 \*/
 				
 				if(((JTextField) e.getSource()).getText().length() == 3) {
 					e.consume();

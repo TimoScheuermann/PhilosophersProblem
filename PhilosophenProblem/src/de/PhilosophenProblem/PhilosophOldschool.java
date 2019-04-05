@@ -90,7 +90,7 @@ public class PhilosophOldschool extends Thread {
 				
 			} 
 			catch (InterruptedException e) {
-				// .acquire() kann Fehler schmeißen -->
+				// .acquire() kann Fehler schmeißen ->
 				log("Fehler bei der Gabelaufnahme", 0.5d);
 			} 
 			finally {
