@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -10,7 +11,7 @@
 	<body>
 	
 		<div class="header" id="navbar">
-			<div class="item">Dokumentation</div>
+			<a class="item" href="#start">Dokumentation</a>
 			<a class="item" href="#problem">Problemstellung</a>
 			<a class="item" href="#ideas">Überlegungen</a>
 			<a class="item" href="#solutions">Lösungen</a>
@@ -19,11 +20,24 @@
 		</div>
 	
 		<div class="content">
+		
+			<div id="start" class="anchor"></div>
+			<div class="paragraph">
+			
+				<h1 id="title">5 Philosophen Problem</h1>
+				
+				<h2>Gruppenteilnehmer</h2>
+				<div class="group">
+					<div class="groupmember">Timo Scheuermann</div>
+					<div class="groupmember">Nina Wolff</div>
+					<div class="groupmember">Andrei Berbescu</div>
+					<div class="groupmember">Julian Homburg</div>
+				</div>
+				
+			</div>
 			
 			<div id="problem" class="anchor"></div>
 			<div class="paragraph">
-				
-				<h1 id="title">5 Philosophen Problem</h1>
 			
 				<h2>Problemstellung</h2>
 				<p>
@@ -277,6 +291,20 @@
 		</div>
 	
 		<div class="footer">
+			<span class="text">
+				<h3>Philosophen Problem</h3>
+				<ul>
+					<li>Timo Scheuermann</li>
+					<li>Nina Wolff</li>
+					<li>Andrei Berbescu</li>
+					<li>Julian Homburg</li>
+				</ul>
+			</span>
+			
+			<span class="image">
+				<a href="https://github.com/TimoScheuermann/PhilosophersProblem/tree/master/PhilosophenProblem"></a>
+			</span>
+			
 		</div>
 	
 	</body>
@@ -297,4 +325,5 @@
 			scrollTop: $(section).offset().top-100
 		});
 	});
+	
 </script>
