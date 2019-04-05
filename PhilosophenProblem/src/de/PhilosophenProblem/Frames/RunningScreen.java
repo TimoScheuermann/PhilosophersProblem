@@ -66,6 +66,7 @@ public class RunningScreen extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		
 		// Falls beim ersten laden des Hintergrunds ein Fehler
 		// aufgetreten ist, wird kein Hintergrund gesetzt
@@ -92,6 +93,7 @@ public class RunningScreen extends JFrame {
 		scrollPane.setBorder(null);
 		scrollPane.setBounds(12, 390, getWidth()-40, getHeight() - 435);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
 		// Custom Scrollbar implementieren, die zum restlichen Design passt
 		scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
 			@Override

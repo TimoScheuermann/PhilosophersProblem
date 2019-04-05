@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 import de.PhilosophenProblem.PhilosophFunctional;
 
-/**
+/*
  * 
  * @author Timo Scheuermann, Andrei Berbescu, Nina Wolff, Julian Homburg
  * @version 1.0.0

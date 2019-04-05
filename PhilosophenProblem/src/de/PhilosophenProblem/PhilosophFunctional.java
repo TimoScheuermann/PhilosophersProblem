@@ -103,7 +103,7 @@ public class PhilosophFunctional {
 							
 					} 
 					catch (InterruptedException e) {
-						// .acquire() kann Fehler schmeißen -->
+						// .acquire() kann Fehler schmeißen ->
 						log.accept("Fehler bei der Gabelaufnahme", 0.5d);
 					} 
 					finally {

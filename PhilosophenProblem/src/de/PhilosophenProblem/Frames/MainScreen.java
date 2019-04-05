@@ -23,7 +23,7 @@ public class MainScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	// Variablen, die sp√§ter spezialisiert werden // vom Nutzer ge√§ndert werden k√∂nnen
+	// Variablen, die sp‰ter spezialisiert werden // vom Nutzer ge‰ndert werden k√∂nnen
 	private int style = 0; // Art der Probleml√∂sung (Funktional/Oldschool)
 	private JButton button_next, button_prev, button_start;
 	private JLabel currentStyle;
@@ -41,10 +41,11 @@ public class MainScreen extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 
 		style = 0;
 		
-		// Objekte in Container hinzuf√ºgen und sp√§ter zum Frame
+		// Objekte in Container hinzuf¸gen und sp‰ter zum Frame
 		Container con = new Container();
 		
 		con.add(currentStyle = ScreenMethods.getInfoLabel("Functional", getWidth()/2-130, 100, 260, 50));
@@ -73,13 +74,13 @@ public class MainScreen extends JFrame {
 				if(text.length() == 0) text = "5";
 				int amount = Integer.parseInt(text);
 				
-				// Es m√ºssen mindestens 2 Philosophen sein
+				// Es m¸ssen mindestens 2 Philosophen sein
 				if(amount < 2) amount = 2;
 				
-				// Frame in der Mainklasse setzen f√ºr Philosophenausgaben und gleichzeitig √∂ffnen
+				// Frame in der Mainklasse setzen f¸r Philosophenausgaben und gleichzeitig √∂ffnen
 				PhilosophenProblem.runningScreen = new RunningScreen(style == 0, amount, background);
 				
-				// Aktuelles Fenster schlie√üen
+				// Aktuelles Fenster schlieﬂen
 				setVisible(false);
 				dispose();
 				
@@ -91,7 +92,7 @@ public class MainScreen extends JFrame {
 		con.add(anzahlField = ScreenMethods.getTextField(400, 180, getWidth()-445, 50));
 		con.add(ScreenMethods.getLabel("Projektarbeit Gruppe 2", 20, 360, getWidth()-50, 40));
 		con.add(ScreenMethods.getLabel("<html><u>Gruppenteilnehmer:</u> Timo Scheuermann, Nina Wolff, Andrei Berbescu & Julian Homburg | (WWI18SEC)<br><br>"
-				+ "<i>\"Es sitzen f√ºnf Philosophen an einem runden Tisch, und jeder hat einen Teller mit Spaghetti vor sich. Zum Essen von Spaghetti ben√∂tigt jeder Philosoph zwei Gabeln. Allerdings waren im Restaurant nur f√ºnf Gabeln vorhanden, die nun zwischen den Tellern liegen. Die Philosophen k√∂nnen also nicht gleichzeitig speisen.\"</i>"
+				+ "<i>\"Es sitzen f¸nf Philosophen an einem runden Tisch, und jeder hat einen Teller mit Spaghetti vor sich. Zum Essen von Spaghetti bentigt jeder Philosoph zwei Gabeln. Allerdings waren im Restaurant nur f¸nf Gabeln vorhanden, die nun zwischen den Tellern liegen. Die Philosophen knnen also nicht gleichzeitig speisen.\"</i>"
 				+ "<br>~ codeplanet.eu/tutorials/java/69-speisende-philosophen"
 				+ "</html>",
 				25, 390, getWidth()-50, 250, 15));
@@ -101,46 +102,44 @@ public class MainScreen extends JFrame {
 		
 		setContentPane(con);
 		
-		// Fenster aktualisieren
-		repaint();
-		
 	}
 	
-	// Methode um den Style zu √§ndern
+	// Methode um den Style zu ‰ndern
 	private void changeCurrentStyle(int i) {
 		style = (style+2) % 2;
 		if(style == 0) currentStyle.setText("Funktional");
 		else if(style == 1) currentStyle.setText("Oldschool");
 		
-		// Falls aus irgend einem Grund die Zahl nicht richtig gez√§hlt wird
+		// Falls aus irgend einem Grund die Zahl nicht richtig gez‰hlt wird
 		else currentStyle.setText("ERROR" + i);
 	}
 	
-	// Methode wird bei repaint(); ausgef√ºhrt
+	// Methode wird bei repaint(); ausgef¸hrt
 	@Override
 	public void paint(Graphics g) {
 		
 		// Wenn Hintergrund noch nicht geladen -> Laden
 		if(background == null) {
+			String u = "https://timoscheuermann.github.io/PhilosophersProblem/img/background-java.png";
 			try {
 				// URL √∂ffnen, hinter der sich der Background verbirgt.
-				URL url = new URL("https://i1.wp.com/angularscript.com/wp-content/uploads/2018/06/Progressively-Loading-Images-With-Blur-Effect-min.png?ssl=1");
+				URL url = new URL(u);
 				// Bild aus URL laden
 				BufferedImage img = ImageIO.read(url);
 				// Bild an Frame anpassen
 				Image imgscaled = img.getScaledInstance(getWidth()*2, getHeight()*2, Image.SCALE_SMOOTH);
-				// Neues Label als "Tr√§ger" f√ºr Bild initialisieren
+				// Neues Label als "Tr‰ger" f¸r Bild initialisieren
 				background = new JLabel();
 				background.setBounds(0, 0, getWidth(), getHeight());
-				// Bild auf JLabel setzen & zum frame hinzuf√ºgen
+				// Bild auf JLabel setzen & zum frame hinzuf¸gen
 				background.setIcon(new ImageIcon(imgscaled));
 				add(background);
-			} 
+			}
 			catch (Exception e) {
 				// Fehler wird eigentlich nur geworfen, wenn das Bild nicht geladen 
 				// werden konnte, oder die URL nicht mehr existiert.
-				e.printStackTrace();
-				System.out.println("Vermutlich keine Internet Verbindung ^.^");
+				System.err.println("Hintergrundbild konnte nicht geladen werden, da keine Verbindung zum Internet besteht oder die URL nicht mehr existiert:");
+				System.err.println(u);
 			}
 		}
 		
