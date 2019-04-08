@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+	
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 		<title>Philosophen Problem</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
+	
 	<body>
 	
 		<div class="header" id="navbar">
@@ -74,12 +76,12 @@
 				
 				<p>Kopf [Z. 1 - 12]</p>
 				<div class="list">
-					- Verschiedene Imports und Variablendeklaration runningScreen
+					» Verschiedene Imports und Variablendeklaration runningScreen
 				</div>
 				
 				<p>Main-Methode [Z. 13 - 27]</p>
 				<div class="list">
-					- Öffnet das Frame, welches in der grafischen Oberfläche ausgewählt wurde (MainScreen)
+					» Öffnet das Frame, welches in der grafischen Oberfläche ausgewählt wurde (MainScreen)
 				</div>
 				
 				<!-- -->
@@ -87,8 +89,8 @@
 				<h3>ScreenMethods</h3>
 				<p></p>
 				<div class="list">
-					- “Diese Klasse beinhaltet im wesentlichen, alle Objekte, die für die Anzeige benötigt werden, für ein einheitliches &nbsp;&nbsp;&nbsp;&nbsp;Design des UI's in Methoden zusammengefasst.”
-					<br>- Gehen wir hier nicht näher darauf ein, da es unrelevant für die Problemstellung ist
+					» “Diese Klasse beinhaltet im wesentlichen, alle Objekte, die für die Anzeige benötigt werden, für ein &nbsp;&nbsp;&nbsp;&nbsp;einheitliches Design des UI's in Methoden zusammengefasst.”
+					<br>» Gehen wir hier nicht näher darauf ein, da es unrelevant für die Problemstellung ist
 				</div>
 				
 				<!-- -->
@@ -96,8 +98,8 @@
 				
 				<p>Kopf [Z. 1 - 24]</p>
 				<div class="list">
-					- Verschiedene Imports und Deklarierung der Variablen
-					<br>- Erzeugung des Konstruktors für die Philosophen Klasse
+					» Verschiedene Imports und Deklarierung der Variablen
+					<br>» Erzeugung des Konstruktors für die Philosophen Klasse
 				</div>
 				
 				<p>Body [Z. 25 - 107]</p>
@@ -125,14 +127,11 @@
 					<br>&nbsp;» Aufnahme der linken und dann der rechten Gabel, durch Methoden aus der Klasse Semaphoren (.acquire() -> &nbsp;&nbsp;&nbsp;&nbsp;kann Fehler werfen)
 					<div class="list2">
 						
-						Fehler bei Aufnahme der linken Gabel im catch-Block:
-						<br>&nbsp;» “Fehler bei der Gabelaufnahme”<br>
-						
-						<br>Fehler bei Aufnahme der rechten Gabel: 
-						<br>&nbsp;» “Konnte nicht essen…”<br>
-						
-						<br>Kein Fehler: 
-						<br>&nbsp;» “Genießt seine Nudeln”
+						<ul style="color:#111">
+							<li>Fehler bei Aufnahme der linken Gabel im catch-Block » <i>“Fehler bei der Gabelaufnahme”</i></li>
+							<li>Fehler bei Aufnahme der rechten Gabel » <i>“Konnte nicht essen…”</i></li>
+							<li>Kein Fehler » <i>“Genießt seine Nudeln”</i></li>
+						</ul>
 						
 					</div>
 					&nbsp;&nbsp;&nbsp;&nbsp;Am Ende legt der Philosoph die rechte und die linke Gabel (finally) zurück.
@@ -180,29 +179,29 @@
 				<h3>Main-Screen [grafische Oberfläche - erbt von JFrame]</h3>
 				<p></p>
 				<div class="list">
-					- Erzeugt das Startfenster
-					<br>- Gehen wir hier nicht näher drauf ein, da es unrelevant für die Problemstellung ist
+					» Erzeugt das Startfenster
+					<br>» Gehen wir hier nicht näher drauf ein, da es unrelevant für die Problemstellung ist
 				</div>
 				
 				<h3>Running-Screen [grafische Oberfläche - erbt von JFrame]</h3>
 				
 				<p>Kopf [Z. 1 - 52]</p>
 				<div class="list">
-					- Verschiedene Imports und Deklarierung der Variablen
+					» Verschiedene Imports und Deklarierung der Variablen
 				</div>
 				
 				<p>Body [Z. 53 - 263]</p>
-				<div class="list">
-					Konstruktor RunningScreen() [Z.53 - 151]
-					<div class="list2">
-						<br>[Z. 53 - 63]:<br> Hier wird angegeben, welche Variante wir verwenden (Funktional oder Klassisch), die Variablen werden gesetzt
-						<br><br>[Z. 64 - 120]:<br> Es werden Darstellungsbezogene Aufrufe verwendet, auf die wir hier nicht näher eingehen, da sie nicht zentral für die Lösung des Problems sind. Grob: Ausgabefenster mit Konsolenausgabe wird erstellt. 
-						<br><br>[Z. 121 - 128]:<br> Wir prüfen welche Variante gespielt werden soll, und übergeben Ihr die Anzahl der Philosophen und der Gabeln jeweils an initFunc oder initOld
-						<br><br>[Z.129 - 151]:<br> Neuer Thread, der die Anzeige (grafische Oberfläche) aktuell hält.
-					</div>
-				</div>
 				
 				<p></p>
+				<div class="list">
+					Konstruktor <i>RunningScreen()</i> [Z.53 - 151]
+					<p></p>&nbsp;» [Z. 53 - 63]:<br><div class="list2">Hier wird angegeben, welche Variante wir verwenden (Funktional oder Klassisch), die Variablen werden gesetzt</div>
+					<p></p>&nbsp;» [Z. 64 - 120]:<br><div class="list2">Es werden Darstellungsbezogene Aufrufe verwendet, auf die wir hier nicht näher eingehen, da sie nicht zentral für die Lösung des Problems sind. Grob: Ausgabefenster mit Konsolenausgabe wird erstellt</div>
+					<p></p>&nbsp;» [Z. 121 - 128]:<br><div class="list2">Wir prüfen welche Variante gespielt werden soll, und übergeben Ihr die Anzahl der Philosophen und der Gabeln jeweils an initFunc() oder initOld()</div>
+					<p></p>&nbsp;» [Z.129 - 151]:<br><div class="list2">Neuer Thread, der die Anzeige (grafische Oberfläche) aktuell hält.</div>
+					<br>
+				</div>
+				
 				<div class="list">
 					Methode <i>initFunc():void</i> [Z. 152 - 178]
 					<br>&nbsp;» Ein Array wird erstellt und über den funktionalen Aufruf anhand von forEach befüllt. Erstellung der &nbsp;&nbsp;&nbsp;&nbsp;Philosophen, Zuweisung der linken und rechten Gabel. Die aufwecken()-Methode aus der funktionalen Klasse &nbsp;&nbsp;&nbsp;&nbsp;Philosophen wird aufgerufen.
@@ -327,14 +326,6 @@
 		setInterval(function(){
 			$("#title").html((Math.floor(Math.random() * 100) + 1) + " Philosophen Problem");
 		}, 500);
-	});
-	
-	$("navbar").find("a").click(function(e) {
-		e.preventDefault();
-		var section = $(this).attr("href");
-		$("html, body").animate({
-			scrollTop: $(section).offset().top-100
-		});
 	});
 	
 </script>
