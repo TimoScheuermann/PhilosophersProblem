@@ -7,6 +7,7 @@
 		<title>Philosophen Problem</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<link rel="icon" href="img/favicon.png" type="image/png">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	
@@ -328,7 +329,9 @@
 
 	$(function(){
 		setInterval(function(){
+		
 			$("#title").html((Math.floor(Math.random() * 100) + 2) + " Philosophen Problem");
+			
 		}, 500);
 	});
 	

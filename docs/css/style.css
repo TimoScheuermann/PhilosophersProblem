@@ -293,6 +293,7 @@ a {
 	/*background: rgba(30, 38, 44, 0.9);*/
 	background-color: #181b1e;
 	padding: 3vw 20% 3vw 20%;
+	user-select: none;
 }
 .footer .text {
 	display: inline-block;
