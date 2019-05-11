@@ -1,5 +1,5 @@
 /*
-CSS von (c) Timo Scheuermann
+CSS von Timo Scheuermann
 */
 
 /*
@@ -123,6 +123,8 @@ a {
   border-bottom: 0.15vw solid rgb(255, 255, 255, 0.8);
   width: 0;
   position: relative;
+  -webkit-transition: .5s ease;
+  -o-transition: .5s ease;
   transition: .5s ease;
   left: -10%;
   top: -2vw;
@@ -134,6 +136,8 @@ a {
 
 .item:not(:first-child) {
 	position: relative;
+	-webkit-transition: .5s ease;
+	-o-transition: .5s ease;
 	transition: .5s ease;
 	color: rgba(255, 255, 255, 0.8);
 	padding: 0 .4vw 0 .4vw;
@@ -162,6 +166,14 @@ a {
 	background-image: -webkit-linear-gradient(#fff, #f9f9f9);
 	background-image: -o-linear-gradient(#fff, #f9f9f9);
 	background-image: linear-gradient(#fff, #f9f9f9);
+}
+
+.number {
+	background: -webkit-linear-gradient(45deg, #e74c3c, #e73c49);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	-webkit-filter: brightness(115%);
+	        filter: brightness(115%);
 }
 
 .list {
@@ -213,7 +225,6 @@ a {
 
 .button {
 	display: inline-block;
-	/*background-color: #e74c3c;*/
 	background: -webkit-gradient(linear, left top, right bottom, from(#e74c3c), to(#e73c49));
 	background: -webkit-linear-gradient(top left, #e74c3c, #e73c49);
 	background: -o-linear-gradient(top left, #e74c3c, #e73c49);
@@ -227,48 +238,20 @@ a {
 	width: 40%;
 	margin: 0 4.5%;
 	cursor: pointer;
+	
+	-webkit-transition: .5s ease;
+	
+	-o-transition: .5s ease;
+	
+	transition: .5s ease;
 }
 .button a {
 	color: #fff;
 }
 
-@-webkit-keyframes buttonAnimation {
-	0% {
-		-webkit-filter: none;
-		        filter: none;
-		-webkit-box-shadow: none;
-		        box-shadow: none;
-	}
-	100% {
-		-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		-webkit-filter: brightness(115%);
-		        filter: brightness(115%);
-	}
-}
-
-@keyframes buttonAnimation {
-	0% {
-		-webkit-filter: none;
-		        filter: none;
-		-webkit-box-shadow: none;
-		        box-shadow: none;
-	}
-	100% {
-		-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		-webkit-filter: brightness(115%);
-		        filter: brightness(115%);
-	}
-}
-
 .button:hover {
-	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	-webkit-filter: brightness(115%);
 	        filter: brightness(115%);
-	-webkit-animation: buttonAnimation .2s forwards;
-	        animation: buttonAnimation .2s forwards;
 }
 
 .imageTextContainer {

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 	
+	<!--
+		Hey DU! So viel Interesse am HTML?
+		
+		HTML zusätzlich zum Projekt geschrieben.
+		MFG Timo Scheuermann
+	-->
+	
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -27,7 +34,7 @@
 			<div id="start" class="anchor"></div>
 			<div class="paragraph">
 			
-				<h1 id="title">5 Philosophen Problem</h1>
+				<h1 id="title"><span id="coloredNumber" class="number">5</span> Philosophen Problem</h1>
 				
 				<h2>Gruppenmitglieder</h2>
 				<div class="group">
@@ -329,9 +336,7 @@
 
 	$(function(){
 		setInterval(function(){
-		
-			$("#title").html((Math.floor(Math.random() * 100) + 2) + " Philosophen Problem");
-			
+			$("#title").html("<span class=\"number\">" + (Math.floor(Math.random() * 100) + 2) + "</span> Philosophen Problem");
 		}, 500);
 	});
 	
