@@ -3,17 +3,22 @@ package de.PhilosophenProblem;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -201,6 +206,20 @@ public class ScreenMethods {
 		});
 		
 		return button;
+	}
+	
+	public static void setIconImage(JFrame frame) {
+		URL url;
+		try {
+			url = new URL("https://timoscheuermann.github.io/PhilosophersProblem/img/favicon-java.png");
+		} 
+		catch (MalformedURLException e) {
+			System.err.println("Konnte IconImage nicht laden...");
+			return;
+		}
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		Image img = kit.createImage(url);
+		frame.setIconImage(img);
 	}
 
 }
