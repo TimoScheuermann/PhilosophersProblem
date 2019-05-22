@@ -67,7 +67,7 @@ public class RunningScreen extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		
+		ScreenMethods.setIconImage(this);
 		// Falls beim ersten laden des Hintergrunds ein Fehler
 		// aufgetreten ist, wird kein Hintergrund gesetzt
 		if(background != null) add(background);

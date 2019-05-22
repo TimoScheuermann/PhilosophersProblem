@@ -42,7 +42,7 @@ public class MainScreen extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
-
+		ScreenMethods.setIconImage(this);
 		style = 0;
 		
 		// Objekte in Container hinzufügen und später zum Frame
