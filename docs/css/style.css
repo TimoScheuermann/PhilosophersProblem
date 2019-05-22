@@ -76,6 +76,10 @@ a {
 	color: rgba(231, 76, 6, 1);
 }
 
+::-webkit-scrollbar { 
+    display: none;
+}
+
 .eoc {
 	height: 2vw;
 }
