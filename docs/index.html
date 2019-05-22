@@ -80,21 +80,21 @@
 			<div id="solutions" class="anchor"></div>
 			<div class="paragraph">
 				<h2>Lösungen</h2>
-				<h3>Main-Methode (PhilosophenProblem)</h3>
+				<h3>PhilosophenProblem<i>.java</i> (Main)</h3>
 				
-				<p>Kopf [Z. 1 - 12]</p>
+				<p>Kopf [Z. 1 - 17]</p>
 				<div class="list">
-					» Verschiedene Imports und Variablendeklaration runningScreen
+					» Verschiedene Imports und Variablendeklaration
 				</div>
 				
-				<p>Main-Methode [Z. 13 - 27]</p>
+				<p>Main-Methode [Z. 20 - 27]</p>
 				<div class="list">
 					» Öffnet das Frame, welches in der grafischen Oberfläche ausgewählt wurde (MainScreen)
 				</div>
 				<br>
 				<!-- -->
 				
-				<h3>ScreenMethods</h3>
+				<h3>ScreenMethods<i>.java</i></h3>
 				<p></p>
 				<div class="list">
 					» Diese Klasse beinhaltet im wesentlichen, alle Objekte, die für die Anzeige benötigt werden, für ein &nbsp;&nbsp;&nbsp;&nbsp;einheitliches Design des UI's in Methoden zusammengefasst.
@@ -103,12 +103,12 @@
 				<br>
 				
 				<!-- -->
-				<h3>Herkömmlichen Programmierung (PhilosophOldSchool.java)</h3>
+				<h3>Herkömmliche Programmierung (PhilosophOldSchool<i>.java</i>)</h3>
 				
 				<p>Kopf [Z. 1 - 24]</p>
 				<div class="list">
 					» Verschiedene Imports und Deklarierung der Variablen
-					<br>» Erzeugung des Konstruktors für die Philosophen Klasse
+					<br>» Erzeugung des Konstruktors für die PhilosophOldSchool Klasse
 				</div>
 				
 				<p>Body [Z. 25 - 107]</p>
@@ -132,7 +132,7 @@
 				
 				<div class="list">
 					Methode <i>run():void</i>
-					<br>&nbsp;» Initialisierung der Endlosschleife (man könnte hier eine Abbruchbedingung einbauen, bei der man angibt, wie &nbsp;&nbsp;&nbsp;&nbsp;viele Portionen jeder gegessen haben soll):
+					<br>&nbsp;» Initialisierung der Endlosschleife (man könnte hier eine Abbruchbedingung einbauen, bei der man angibt, wie &nbsp;&nbsp;&nbsp;&nbsp;viele Portionen jeder gegessen haben soll)
 					<br>&nbsp;» Aufnahme der linken und dann der rechten Gabel, durch Methoden aus der Klasse Semaphoren (.acquire() -> &nbsp;&nbsp;&nbsp;&nbsp;kann Fehler werfen)
 					<div class="list2">
 						
@@ -147,7 +147,7 @@
 				</div>
 				<br>
 				
-				<h3>Funktionalen Programmierung (PhilosophFunctional)</h3>
+				<h3>Funktionale Programmierung (PhilosophFunctional<i>.java</i>)</h3>
 				<p>Kopf [Z. 1 - 19]</p>
 				<div class="list">
 					Verschiedene Imports und Deklarierung der Variablen
@@ -162,7 +162,7 @@
 				
 				<div class="list">
 					Methode <i>isEating():boolean</i>
-					<br>&nbsp;» Gibt zurück ob der Philosoph gerade isst
+					<br>&nbsp;» Gibt zurück, ob der Philosoph gerade isst
 					<br><br>
 				</div>
 				
@@ -181,13 +181,13 @@
 				
 				<div class="list">
 					Methode <i>aufwecken():void</i>
-					<br>&nbsp;» Start eines Threads über funktionalen Aufruf, startet die Endlosschleife
+					<br>&nbsp;» Start eines Threads über funktionalen Aufruf & Start einer Endlosschleife
 					<br>&nbsp;» Ablauf der Endlosschleife analog der klassischen Programmierung
 					<br>
 				</div>
 				<br>
 				
-				<h3>Main-Screen [grafische Oberfläche - erbt von JFrame]</h3>
+				<h3>Main-Screen<i>.java</i> [grafische Oberfläche - erbt von JFrame]</h3>
 				<p></p>
 				<div class="list">
 					» Erzeugt das Startfenster
@@ -195,7 +195,7 @@
 				</div>
 				
 				<br>
-				<h3>Running-Screen [grafische Oberfläche - erbt von JFrame]</h3>
+				<h3>Running-Screen<i>.java</i> [grafische Oberfläche - erbt von JFrame]</h3>
 				
 				<p>Kopf [Z. 1 - 52]</p>
 				<div class="list">
@@ -206,47 +206,47 @@
 				
 				<p></p>
 				<div class="list">
-					Konstruktor <i>RunningScreen()</i> [Z.53 - 151]
+					Konstruktor <i>RunningScreen()</i> [Z.53 - 153]
 					<p></p>&nbsp;» [Z. 53 - 63]:<br><div class="list2">Hier wird angegeben, welche Variante wir verwenden (Funktional oder Klassisch), die Variablen werden gesetzt</div>
-					<p></p>&nbsp;» [Z. 64 - 120]:<br><div class="list2">Es werden Darstellungsbezogene Aufrufe verwendet, auf die wir hier nicht näher eingehen, da sie nicht zentral für die Lösung des Problems sind. Grob: Ausgabefenster mit Konsolenausgabe wird erstellt</div>
-					<p></p>&nbsp;» [Z. 121 - 128]:<br><div class="list2">Wir prüfen welche Variante gespielt werden soll, und übergeben Ihr die Anzahl der Philosophen und der Gabeln jeweils an initFunc() oder initOld()</div>
-					<p></p>&nbsp;» [Z.129 - 151]:<br><div class="list2">Neuer Thread, der die Anzeige (grafische Oberfläche) aktuell hält.</div>
+					<p></p>&nbsp;» [Z. 64 - 122]:<br><div class="list2">Es werden Darstellungsbezogene Aufrufe verwendet, auf die wir hier nicht näher eingehen, da sie nicht zentral für die Lösung des Problems sind. Grob: Ausgabefenster mit Konsolenausgabe wird erstellt</div>
+					<p></p>&nbsp;» [Z. 123 - 130]:<br><div class="list2">Wir prüfen welche Variante gespielt werden soll, und übergeben ihr die Anzahl der Philosophen und der Gabeln jeweils an <i>initFunc()</i> <i>oder initOld()</i></div>
+					<p></p>&nbsp;» [Z.131 - 153]:<br><div class="list2">Neuer Thread, der die Anzeige (grafische Oberfläche) aktuell hält</div>
 					<br>
 				</div>
 				
 				<div class="list">
-					Methode <i>initFunc():void</i> [Z. 152 - 178]
-					<br>&nbsp;» Ein Array wird erstellt und über den funktionalen Aufruf anhand von forEach befüllt. Erstellung der &nbsp;&nbsp;&nbsp;&nbsp;Philosophen, Zuweisung der linken und rechten Gabel. Die aufwecken()-Methode aus der funktionalen Klasse &nbsp;&nbsp;&nbsp;&nbsp;Philosophen wird aufgerufen.
+					Methode <i>initFunc():void</i> [Z. 155 - 179]
+					<br>&nbsp;» Ein Array wird erstellt und über den funktionalen Aufruf anhand von forEach befüllt. Erstellung der &nbsp;&nbsp;&nbsp;&nbsp;Philosophen, Zuweisung der linken und rechten Gabel. Die aufwecken()-Methode aus der Klasse &nbsp;&nbsp;&nbsp;&nbsp;PhilosophFunctional<i>.java</i> wird aufgerufen.
 					<br><br>
 				</div>
 				
 				<div class="list">
-					Methode <i>initOld():void</i> [Z. 179 - 195]
-					<br>&nbsp;» Ein Array wird erstellt und über die for-Schleife befüllt. Erstellung der Philosophen, Zuweisung der linken und &nbsp;&nbsp;&nbsp;&nbsp;rechten Gabel; Thread wird gestartet, dieser ruft die run()-Methode.
+					Methode <i>initOld():void</i> [Z. 181 - 197]
+					<br>&nbsp;» Ein Array wird erstellt und über die for-Schleife befüllt. Erstellung der Philosophen, Zuweisung der linken und &nbsp;&nbsp;&nbsp;&nbsp;rechten Gabel; Thread wird gestartet, dieser ruft die run()-Methode auf.
 					<br><br>
 				</div>
 				
 				<div class="list">
-					Methode <i>isEating():int</i> [Z. 196 - 203]
+					Methode <i>isEating():boolean</i> [Z. 199 - 205]
 					<br>&nbsp;» Prüft, ob ein Philosoph gerade am essen ist (boolean), anhand einer if-Anweisung.
 					<br><br>
 				</div>
 				
 				<div class="list">
-					Methode <i>getAmountOfSoups():int</i> [Z. 204 - 211]
-					<br>&nbsp;» Prüft, wie viel ein Philosoph bereits gegessen hat, anhand einer if-Anweisung.
+					Methode <i>getAmountOfSoups():int</i> [Z. 207 - 213]
+					<br>&nbsp;» Prüft, wie viel ein Philosoph bereits gegessen hat.
 					<br><br>
 				</div>
 				
 				<div class="list">
-					Methode <i>addLog():void</i> [Z. 212 - 218]
-					<br>&nbsp;» Gibt den Informationstext auf der Konsole im Ausgabefenster aus.
+					Methode <i>addLog():void</i> [Z. 216 - 218]
+					<br>&nbsp;» Gibt einen Informationstext auf der Konsole im Ausgabefenster aus.
 					<br><br>
 				</div>
 				
 				<div class="list">
-					Methode <i>paint():void</i> [Z. 219 - 263]
-					<br>&nbsp;» Ist eine darstellungsbezogene Methode, auf die wir hier nicht näher eingehen, da sie nicht zentral für die &nbsp;&nbsp;&nbsp;&nbsp;Lösung des Problems sind. Grobe Beschreibung: Philosophen werden im Kreis am Tisch angeordnet. Dieser &nbsp;&nbsp;&nbsp;&nbsp;Punkt färbt sich grün, wenn der Philosoph gerade am essen ist.
+					Methode <i>paint():void</i> [Z. 221 - 263]
+					<br>&nbsp;» Ist eine darstellungsbezogene Methode, auf die wir hier nicht näher eingehen, da sie nicht zentral für die &nbsp;&nbsp;&nbsp;&nbsp;Lösung des Problems ist. Grobe Beschreibung: Philosophen werden im Kreis um den Tisch angeordnet. &nbsp;&nbsp;&nbsp;&nbsp;Dieser Punkt färbt sich grün, wenn der Philosoph gerade am essen ist.
 					<br><br>
 				</div>
 				
@@ -283,7 +283,7 @@
 			
 				<h2>Ergebnis der Grafischen Oberfläche</h2>
 				
-				<div class="imageTextContainer">
+				<div class="imageTextContainer" style="border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 3.5vw;">
 					<div class="imageNextToText right">
 						<span><img src="img/welcome.png"></span>
 						<div class="imageDescription">Abb.2: Startfenster mit Eingabe und Auswahlmöglichkeiten</div>
@@ -291,12 +291,12 @@
 					<div class="textNextToImage left">
 						Anhand der Pfeiltbuttons kann man zwischen funktionaler und klassischer Ausführung auswählen, welche abgespielt werden soll.
 						<br><br>Eingabe der Anzahl der Philosophen und somit auch der Anzahl der Gabeln.
+						<br><br>Button, um die Simulation zu starten.
 						<br><br>Im unteren Bereich wird das Problem der speisenden Philosophen noch mal erläutert:
 						<br><br>“Es sitzen fünf Philosophen an einem runden Tisch, und jeder hat einen Teller mit Spaghetti vor sich. Zum Essen von Spaghetti benötigt jeder Philosoph zwei Gabeln. Allerdings waren im Restaurant nur fünf Gabeln vorhanden, die nun zwischen den Tellern liegen. Die Philosophen können also nicht gleichzeitig speisen.”
 						<br><br>Quelle: <a href="http://www.codeplanet.eu/tutorials/java/69-speisende-philosophen.html">Codeplanet</a>
 					</div>
 				</div>
-				
 				<div class="imageTextContainer">
 					<div class="imageNextToText left">
 						<span><img src="img/running.png"></span>

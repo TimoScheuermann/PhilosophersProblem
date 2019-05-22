@@ -200,6 +200,7 @@ a {
 .group {
 	display: block;
 	margin-bottom: 3vw;
+	text-align: center;
 }
 
 .groupmember {
@@ -221,6 +222,7 @@ a {
 .optionButtons {
 	display: block;
 	margin-bottom: 3vw;
+	text-align: center;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	    -ms-user-select: none;
