@@ -3,3 +3,4 @@ Projektarbeit Gruppe #2, J. Reichwald - 2. Semester Moderne Programmierkonzepte 
 
 ## Dokumentation
 [Dokumentation](https://timoscheuermann.github.io/PhilosophersProblem)
+
